@@ -1,4 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Agami Website
+
+A modern, professional website for Agami, featuring:
+- Glassmorphism highlight for "Introducing Agami AI" (ProductPreview) section
+- Classic, clean backgrounds for all other sections
+- Team and Patron showcase with gold glow and premium style
+- Dedicated gratitude page for Prof Dr Syed Akhter Hossain
+- Built with Next.js (React, TypeScript) and Tailwind CSS
+
+## Features
+- **Glassmorphism**: Only the ProductPreview section uses a frosted glass effect for a premium highlight.
+- **Tribute Page**: `/gratitude-dr-hossain` honors Prof Dr Syed Akhter Hossain with biography and awards.
+- **Modern Animations**: Framer Motion for smooth, professional UI transitions.
+- **Mobile Responsive**: Fully responsive layout for all devices.
+
+## Getting Started
+
 
 ## Getting Started
 
