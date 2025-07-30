@@ -54,3 +54,19 @@ body {
     color: transparent;
 }
 
+.bg-golden-pro {
+    background: linear-gradient(135deg, #fffbe6 0%, #f7d774 50%, #f5c542 100%);
+    /* Soft gold gradient */
+    box-shadow: 0 8px 32px 0 rgba(245, 197, 66, 0.08);
+    /* Subtle gold shadow */
+}
+
+.patron-glow {
+  box-shadow: 0 0 0 4px rgba(245, 197, 66, 0.16), 0 6px 24px 0 rgba(255, 236, 139, 0.16);
+}
+
+.patron-distinct {
+  border: 2.5px solid #ffe066;
+  background: linear-gradient(135deg, #fffbe6 60%, #fffde7 100%);
+  position: relative;
+}

@@ -388,36 +388,65 @@ const About: React.FC = () => (
         </p>
       </AnimatedSection>
       <AnimatedSection className="mt-20 max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-10 text-center">
-          <div className="p-6">
-            <h4 className="text-2xl font-semibold mb-3 text-gray-800">
-              Innovation
-            </h4>
-            <p className="text-gray-600">
-              A relentless pursuit of novel ideas and technologies to create
-              tangible, lasting value.
-            </p>
-          </div>
-          <div className="p-6 border-x border-gray-200">
-            <h4 className="text-2xl font-semibold mb-3 text-gray-800">
-              Partnership
-            </h4>
-            <p className="text-gray-600">
-              Building enduring relationships by acting as an extension of your
-              team to achieve shared success.
-            </p>
-          </div>
-          <div className="p-6">
-            <h4 className="text-2xl font-semibold mb-3 text-gray-800">
-              Excellence
-            </h4>
-            <p className="text-gray-600">
-              Upholding the highest standards in code quality, project
-              execution, and strategic thinking.
-            </p>
-          </div>
-        </div>
-      </AnimatedSection>
+  <motion.div
+    className="grid md:grid-cols-3 gap-10 text-center"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.4 }}
+    variants={{}}
+  >
+    {[
+      {
+        title: 'Innovation',
+        description: 'A relentless pursuit of novel ideas and technologies to create tangible, lasting value.',
+        icon: (
+          <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-tr from-yellow-200 via-yellow-400 to-amber-300 shadow-lg mb-6 animate-float-slow">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path stroke="#b45309" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" d="M12 2v2m0 16v2m7-7h2m-18 0H2m14.95-6.95l1.414-1.414M6.05 17.95l-1.414 1.414m12.728 0l1.414-1.414M6.05 6.05L4.636 4.636"/><circle cx="12" cy="12" r="6" stroke="#b45309" strokeWidth="1.7"/></svg>
+          </span>
+        ),
+        accent: 'from-yellow-200 via-yellow-400 to-amber-300',
+      },
+      {
+        title: 'Partnership',
+        description: 'Building enduring relationships by acting as an extension of your team to achieve shared success.',
+        icon: (
+          <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-tr from-sky-200 via-sky-400 to-indigo-300 shadow-lg mb-6 animate-float">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path stroke="#0369a1" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" d="M17 8a5 5 0 1 0-10 0c0 2.5 2 4.5 5 7 3-2.5 5-4.5 5-7z"/><circle cx="12" cy="8" r="2" fill="#0369a1"/></svg>
+          </span>
+        ),
+        accent: 'from-sky-200 via-sky-400 to-indigo-300',
+      },
+      {
+        title: 'Excellence',
+        description: 'Upholding the highest standards in code quality, project execution, and strategic thinking.',
+        icon: (
+          <span className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-tr from-fuchsia-200 via-fuchsia-400 to-pink-300 shadow-lg mb-6 animate-float-fast">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path stroke="#a21caf" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" d="M12 3l2.09 6.26L21 9.27l-5 3.64L17.18 21 12 17.27 6.82 21 8 12.91l-5-3.64 6.91-1.01z"/></svg>
+          </span>
+        ),
+        accent: 'from-fuchsia-200 via-fuchsia-400 to-pink-300',
+      },
+    ].map((value, i) => (
+      <motion.div
+        key={value.title}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.1 + i * 0.18, type: 'spring', stiffness: 60 }}
+        className={`glass p-8 rounded-2xl shadow-xl border-2 border-white/70 bg-white/70 backdrop-blur-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group relative overflow-hidden`}
+        style={{ minHeight: 300 }}
+      >
+        <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-gradient-to-br from-white/80 to-gray-100 blur-2xl opacity-60 group-hover:opacity-80 transition" />
+        {value.icon}
+        <h4 className="text-2xl font-semibold mb-3 text-gray-900 drop-shadow-sm">
+          {value.title}
+        </h4>
+        <p className="text-gray-700 mb-2 leading-relaxed">
+          {value.description}
+        </p>
+      </motion.div>
+    ))}
+  </motion.div>
+</AnimatedSection>
     </div>
   </section>
 );
@@ -467,7 +496,7 @@ const Services: React.FC = () => {
     <section id="services" className="py-24 lg:py-32 bg-white">
       <AnimatedSection className="text-center mb-20">
         <h2 className="text-4xl font-bold tracking-tight text-gradient sm:text-5xl drop-shadow-md">
-          Our Core Capabilities
+          Scalable. Secure. Smart.
         </h2>
         <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
           We deliver end-to-end, enterprise-grade solutions tailored to your
@@ -510,49 +539,76 @@ const Services: React.FC = () => {
 
 // --- Product Preview Section ---
 const ProductPreview: React.FC<HeroProps> = ({ scrollToSection }) => (
-  <section id="product" className="py-24 lg:py-32 bg-gray-50">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
-        <AnimatedSection className="text-center lg:text-left">
-          <p className="text-base font-bold uppercase tracking-wider text-gray-500">
-            Coming Soon
-          </p>
-          <h2 className="mt-4 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            Introducing Agami AI
-          </h2>
-          <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-            The intelligent analyst for your website. Agami AI audits your
-            digital presence and delivers a prioritized roadmap for SEO, content
-            strategy, and performance optimization. Stop guessing, start
-            growing.
-          </p>
-          <div className="mt-10">
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("contact");
-              }}
-              className="text-lg text-gray-800 font-semibold hover:text-black transition-colors group"
-            >
-              Request Early Access{" "}
-              <span className="inline-block transition-transform group-hover:translate-x-1">
-                &rarr;
-              </span>
-            </a>
-          </div>
-        </AnimatedSection>
-        <AnimatedSection>
-          <div className="relative">
-            <div className="absolute -inset-2 bg-gradient-to-r from-gray-200 to-gray-300 rounded-xl blur-lg opacity-50"></div>
-            <img
-              src="https://placehold.co/600x400/f3f4f6/cbd5e1?text=Agami+AI+Dashboard"
-              alt="Agami AI Product Preview"
-              className="relative rounded-xl shadow-2xl border border-gray-200/50"
-            />
-          </div>
-        </AnimatedSection>
-      </div>
+  <section
+    id="product"
+    className="relative min-h-[80vh] flex items-center justify-center bg-[#F8F8F8] py-24 lg:py-32 overflow-hidden"
+  >
+    {/* Golden animated shine overlay */}
+    <motion.div
+      aria-hidden
+      initial={{ opacity: 0.18, scale: 0.95, x: -60, y: -40 }}
+      animate={{
+        opacity: 0.22,
+        scale: 1.1,
+        x: [ -60, 30, -60 ],
+        y: [ -40, 10, -40 ],
+      }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        repeatType: 'loop',
+        ease: 'easeInOut',
+      }}
+      className="pointer-events-none absolute top-[-20%] left-[-20%] w-[70vw] h-[60vw] rounded-full bg-gradient-to-tr from-yellow-200 via-yellow-100 to-transparent blur-3xl z-0"
+      style={{ filter: 'blur(60px)' }}
+    />
+    <div className="w-full flex justify-center items-center relative z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="glass bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl border border-gray-200 max-w-2xl mx-auto px-10 py-16 flex flex-col items-center text-center"
+      >
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-base font-bold uppercase tracking-wider text-gray-500 mb-2"
+        >
+          Coming Soon
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl mb-6"
+        >
+          Introducing <span className="text-gradient">Agami AI</span>
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.22 }}
+          className="mt-4 text-xl text-gray-700 leading-relaxed mb-8"
+        >
+          The intelligent analyst for your website. <span className="font-semibold text-gray-900">Agami AI</span> audits your digital presence and delivers a prioritized roadmap for SEO, content strategy, and performance optimization.<br className="hidden sm:block"/> Stop guessing, start growing.
+        </motion.p>
+        <motion.a
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.33 }}
+          href="#contact"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection("contact");
+          }}
+          className="inline-flex items-center bg-gradient-to-r from-sky-500 via-indigo-500 to-fuchsia-500 text-white font-semibold px-8 py-4 rounded-2xl shadow-xl hover:shadow-indigo-400/80 transform transition-all duration-300 text-lg ring-2 ring-sky-400/40 ring-offset-2 ring-offset-white animate-glow focus:outline-none focus:ring-4 focus:ring-indigo-300"
+        >
+          Request Early Access
+          <span className="ml-2 text-2xl">&rarr;</span>
+        </motion.a>
+      </motion.div>
     </div>
   </section>
 );
@@ -583,55 +639,59 @@ const Team: React.FC = () => {
   };
 
   return (
-    <section id="team" className="py-24 lg:py-32 bg-white">
+    <section id="team" className="py-20 lg:py-28 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="text-center mb-12">
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+        <AnimatedSection className="text-center mb-14">
+          <h2 className="text-5xl font-extrabold tracking-tight text-gradient bg-gradient-to-r from-yellow-600 via-yellow-500 to-sky-500 bg-clip-text text-transparent drop-shadow-lg mb-4">
             The Minds Behind Agami
           </h2>
-          <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-            A collective of dedicated engineers, thinkers, and innovators.
+          <div className="flex justify-center mb-6">
+            <span className="inline-block w-24 h-1 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-sky-200" />
+          </div>
+          <p className="mt-2 text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto font-medium">
+            Meet the visionaries and builders who drive our mission forward.
           </p>
         </AnimatedSection>
 
-        {/* Patrons Section */}
-        <AnimatedSection className="mb-20">
-          <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-10">
-            <div className="text-center">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">
-                Chief Patron
-              </h3>
-              <TeamMemberCard
-                name="Prof Dr Syed Akter Hossain"
-                role="Chief Patron"
-                imgSrc="https://placehold.co/128x128/e0e0e0/4a4a4a?text=SAH"
-              />
-            </div>
-            <div className="text-center">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">
-                Patron
-              </h3>
-              <TeamMemberCard
-                name="Naymul Islam Nayeem"
-                role="Patron"
-                imgSrc="https://placehold.co/128x128/e0e0e0/4a4a4a?text=NIN"
-              />
-            </div>
-          </div>
-        </AnimatedSection>
+
 
         {/* Core Team Section */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-12"
-        >
-          {teamMembers.map((member) => (
-            <TeamMemberCard key={member.name} name={member.name} imgSrc="" />
-          ))}
-        </motion.div>
+        <AnimatedSection>
+          <h3 className="text-xl font-semibold text-gray-800 mb-6 text-center tracking-tight">Core Team</h3>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-4 gap-y-8"
+          >
+            {/* Patron as first card, styled same as core team */}
+            <motion.div
+              key="patron"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: 0.5, delay: 0 }}
+            >
+              <div className="patron-glow patron-distinct rounded-xl">
+                <TeamMemberCard name="Naymul Islam Nayeem" role="Patron" imgSrc="https://placehold.co/128x128/e0e0e0/4a4a4a?text=NIN" />
+              </div>
+            </motion.div>
+            {teamMembers.map((member, idx) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{ duration: 0.5, delay: (idx + 1) * 0.07 }}
+              >
+                <div className="patron-glow rounded-xl">
+                  <TeamMemberCard name={member.name} imgSrc="" />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatedSection>
       </div>
     </section>
   );
@@ -873,20 +933,63 @@ const MainApp: React.FC = () => {
   </section>
   <section className="container mx-auto px-4 sm:px-6 lg:px-8">
     <About />
-    <AnimatedSection className="my-24 text-center">
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.6 }}
-        transition={{ duration: 0.8, delay: 0.1 }}
-        className="text-5xl sm:text-7xl font-extrabold mb-8 text-gradient drop-shadow-lg"
-      >
-        Elite <span className="text-gradient">Java & AI</span> Solutions
-      </motion.h2>
-    </AnimatedSection>
+    <div className="relative my-24">
+      {/* Animated background blobs */}
+      <motion.div
+        aria-hidden
+        initial={{ opacity: 0.13, scale: 0.85, x: -80, y: -60 }}
+        animate={{
+          opacity: 0.21,
+          scale: 1.08,
+          x: [ -80, 40, -80 ],
+          y: [ -60, 30, -60 ],
+        }}
+        transition={{ duration: 12, repeat: Infinity, repeatType: 'loop', ease: 'easeInOut' }}
+        className="pointer-events-none absolute top-[-18%] left-[-18%] w-[80vw] h-[60vw] rounded-full bg-gradient-to-tr from-yellow-100 via-amber-100 to-sky-100 blur-3xl z-0"
+        style={{ filter: 'blur(80px)' }}
+      />
+      <motion.div
+        aria-hidden
+        initial={{ opacity: 0.10, scale: 0.8, x: 60, y: 80 }}
+        animate={{
+          opacity: 0.16,
+          scale: 1.1,
+          x: [ 60, -30, 60 ],
+          y: [ 80, 10, 80 ],
+        }}
+        transition={{ duration: 14, repeat: Infinity, repeatType: 'loop', ease: 'easeInOut', delay: 1.8 }}
+        className="pointer-events-none absolute bottom-[-15%] right-[-16%] w-[60vw] h-[50vw] rounded-full bg-gradient-to-tl from-sky-100 via-yellow-50 to-white blur-3xl z-0"
+        style={{ filter: 'blur(60px)' }}
+      />
+      <AnimatedSection className="text-center relative z-10">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="text-5xl sm:text-7xl font-extrabold mb-8 text-gradient drop-shadow-lg"
+        >
+          Elite <span className="text-gradient">Java & AI</span> Solutions
+        </motion.h2>
+      </AnimatedSection>
+    </div>
     <Services />
     <ProductPreview scrollToSection={scrollToSection} />
     <Team />
+    <AnimatedSection className="my-24 flex justify-center">
+      <div className="bg-gradient-to-br from-yellow-50 via-white to-sky-50 rounded-3xl shadow-xl border border-yellow-100 max-w-xl w-full p-10 text-center">
+        <h3 className="text-2xl font-bold text-yellow-700 mb-4 drop-shadow-sm">Mentor Tribute</h3>
+        <p className="text-gray-700 mb-6">
+          We honor our mentor, Prof Dr Syed Akhter Hossain, whose vision and guidance have shaped our journey. Read our heartfelt tribute and learn about his remarkable impact on our team and the tech community.
+        </p>
+        <a
+          href="/gratitude-dr-hossain"
+          className="inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-8 py-4 rounded-2xl shadow-lg transition-all duration-300 text-lg focus:outline-none focus:ring-2 focus:ring-yellow-300"
+        >
+          View Mentor Tribute
+        </a>
+      </div>
+    </AnimatedSection>
     <Contact />
   </section>
 </main>
