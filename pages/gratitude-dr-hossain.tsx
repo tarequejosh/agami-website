@@ -9,7 +9,7 @@ export default function GratitudeDrHossain() {
         <meta name="description" content="A tribute to our mentor Prof Dr Syed Akhter Hossain, his achievements, and his impact on generations of students." />
       </Head>
       <main className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-sky-50 flex items-center justify-center py-20 px-4">
-        <section className="max-w-2xl mx-auto bg-white/80 rounded-3xl shadow-2xl p-10 text-center border border-yellow-100">
+        <section className="max-w-2xl mx-auto glass bg-white/80 rounded-3xl shadow-2xl p-10 text-center border border-yellow-100">
           <h1 className="text-4xl font-extrabold text-yellow-700 mb-4 drop-shadow-sm">With Heartfelt Gratitude</h1>
           <h2 className="text-2xl font-semibold text-gray-800 mb-2">Prof Dr Syed Akhter Hossain</h2>
           <p className="text-lg text-gray-700 mb-6">

@@ -295,6 +295,8 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => (
     id="hero"
     className="relative h-screen flex items-center justify-center text-center bg-white overflow-hidden"
   >
+    {/* Glass overlay for hero */}
+    <div className="absolute inset-0 glass z-0 pointer-events-none" style={{background:'rgba(255,255,255,0.28)'}} />
     {/* Animated Colorful Floating Shapes */}
     <motion.div
       aria-hidden
@@ -541,7 +543,7 @@ const Services: React.FC = () => {
 const ProductPreview: React.FC<HeroProps> = ({ scrollToSection }) => (
   <section
     id="product"
-    className="relative min-h-[80vh] flex items-center justify-center bg-[#F8F8F8] py-24 lg:py-32 overflow-hidden"
+    className="relative min-h-[80vh] flex items-center justify-center glass bg-[#F8F8F8]/70 py-24 lg:py-32 overflow-hidden"
   >
     {/* Golden animated shine overlay */}
     <motion.div
@@ -639,12 +641,9 @@ const Team: React.FC = () => {
   };
 
   return (
-    <section id="team" className="py-20 lg:py-28 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="team" className="py-24 lg:py-32 bg-white">
+      <div>
         <AnimatedSection className="text-center mb-14">
-          <h2 className="text-5xl font-extrabold tracking-tight text-gradient bg-gradient-to-r from-yellow-600 via-yellow-500 to-sky-500 bg-clip-text text-transparent drop-shadow-lg mb-4">
-            The Minds Behind Agami
-          </h2>
           <div className="flex justify-center mb-6">
             <span className="inline-block w-24 h-1 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-sky-200" />
           </div>
@@ -652,9 +651,6 @@ const Team: React.FC = () => {
             Meet the visionaries and builders who drive our mission forward.
           </p>
         </AnimatedSection>
-
-
-
         {/* Core Team Section */}
         <AnimatedSection>
           <h3 className="text-xl font-semibold text-gray-800 mb-6 text-center tracking-tight">Core Team</h3>
@@ -818,6 +814,8 @@ const Contact: React.FC = () => {
 // --- Footer Component ---
 const Footer: React.FC = () => (
   <footer className="bg-white border-t border-gray-200">
+  {/* Glass overlay for footer depth */}
+  <div className="absolute inset-0 glass z-0 pointer-events-none" style={{background:'rgba(255,255,255,0.22)'}} />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="flex flex-col md:flex-row justify-between items-center">
         <div className="flex items-center space-x-2">
